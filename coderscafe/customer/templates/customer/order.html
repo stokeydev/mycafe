@@ -18,7 +18,7 @@
                                     <input type="checkbox" name="items[]" class="form-check-input" value="{{ starter.pk }}">
                                     <label class="form-check-label">{{ starter.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ starter.price }}</p>
+                                <p class="font-weight-bold pl-5">&nbsp; £{{ starter.price }}</p>
                             </div>
                             <p>{{ starter.description }}</p>
                         </div>
@@ -39,7 +39,7 @@
                                     <input type="checkbox" name="items[]" class="form-check-input" value="{{ main.pk }}">
                                     <label class="form-check-label">{{ main.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ main.price }}</p>
+                                <p class="font-weight-bold pl-5">&nbsp; £{{ main.price }}</p>
                             </div>
                             <p>{{ main.description }}</p>
                         </div>
@@ -60,7 +60,7 @@
                                     <input type="checkbox" name="items[]" class="form-check-input" value="{{ dessert.pk }}">
                                     <label class="form-check-label">{{ dessert.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ dessert.price }}</p>
+                                <p class="font-weight-bold pl-5">&nbsp; £{{ dessert.price }}</p>
                             </div>
                             <p>{{ dessert.description }}</p>
                         </div>
@@ -81,7 +81,7 @@
                                     <input type="checkbox" name="items[]" class="form-check-input" value="{{ drinks.pk }}">
                                     <label class="form-check-label">{{ drinks.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ drinks.price }}</p>
+                                <p class="font-weight-bold pl-5">&nbsp; £{{ drinks.price }}</p>
                             </div>
                             <p>{{ drinks.description }}</p>
                         </div>
@@ -89,6 +89,36 @@
                     <hr />
                     {% endfor %}
                 </div>
+                <div class="form-group pt-3">
+                    <label for="name">Full Name: </label>
+                    <input required class="form-control" type="text" placeholder="Your Name" name="name" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Email Address: </label>
+                    <input required class="form-control" type="text" placeholder="example@company.com" name="email" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Street Address: </label>
+                    <input required class="form-control" type="text" placeholder="123 High St" name="street" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">City: </label>
+                    <input required class="form-control" type="text" placeholder="Oxford" name="city" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">County: </label>
+                    <input required class="form-control" type="text" placeholder="Oxfordshire" name="county" />
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Post Code: </label>
+                    <input required class="form-control" type="text" placeholder="OX1 1AA" name="postcode" />
+                </div>
+
 
                 <button class="btn btn-dark mt-5">Place Order!</button>
             </form>

@@ -7,20 +7,20 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="pt-5">
-                    {% for app in starter %}
+                    {% for starter in starters %}
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
-                            <img class="rounded" src="{{ app.image.url }}" width="150" height="100"/>
+                            <img class="rounded" src="{{ starter.image.url }}" width="150" height="100"/>
                         </div>
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
                                 <div class="form-group form-check">
                                     <input type="checkbox" name="items[]" class="form-check-input" value="{{ starter.pk }}">
-                                    <label class="form-check-label">{{ app.name }}</label>
+                                    <label class="form-check-label">{{ starter.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ app.price }}</p>
+                                <p class="font-weight-bold pl-5">{{ starter.price }}</p>
                             </div>
-                            <p>{{ app.description }}</p>
+                            <p>{{ starter.description }}</p>
                         </div>
                     </div>
                     <hr />

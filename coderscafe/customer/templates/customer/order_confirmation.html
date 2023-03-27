@@ -4,9 +4,9 @@
 <div class="container mb-5">
     <div class="row justify-content-center mt-1">
         <div class="col-md-5 col-sm-12 p-4 text-center">
-            <h1>Order Submitted!</h1>
-            <p>You should receive a confirmation email soon.</p>
-            <a href="{% url 'index' %}">Go to the homepage</a>
+            <h1>Order Summary</h1>
+            <p>Review your order below before paying:</p>
+            <a href="{% url 'order' %}">Return to menu</a>
         </div>
     </div>
 
@@ -27,24 +27,27 @@
     </div>
 </div>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
         }
+      }
     }
     return cookieValue;
-}
-const csrftoken = getCookie('csrftoken');
+  }
+  const csrftoken = getCookie('csrftoken');
 
   paypal.Button.render({
     // Configure environment
@@ -57,15 +60,15 @@ const csrftoken = getCookie('csrftoken');
     locale: 'en_US',
     style: {
       size: 'large',
-      color: 'gold',
-      shape: 'pill',
+      color: 'blue',
+      shape: 'rect',
     },
 
     // Enable Pay Now checkout flow (optional)
     commit: true,
 
     // Set up a payment
-    payment: function(data, actions) {
+    payment: function (data, actions) {
       return actions.payment.create({
         transactions: [{
           amount: {
@@ -77,23 +80,21 @@ const csrftoken = getCookie('csrftoken');
     },
     // Execute the payment
     onAuthorize: function(data, actions) {
-      return actions.payment.execute().then(function() {
+      return actions.payment.execute().then(function () {
         // Show a confirmation message to the buyer
         $.ajax({
-            type: 'POST',
-            url: "{% url 'order-confirmation' pk %}",
-            beforeSend: function(request) {
-                request.sendRequestHeader('X-CSRFToken', csrftoken)
-            },
-            data: JSON.stringify({'isPaid': true}),
-            success: function(data) {
-                window.location.href = '/payment-confirmation/'
-            }
-
+          type: 'POST',
+          url: "{% url 'order-confirmation' pk %}",
+          data: JSON.stringify({ 'isPaid': true }),
+          beforeSend: function (request) {
+            request.setRequestHeader('X-CSRFToken', csrftoken)
+          },
+          success: function(data) {
+            window.location.href = '/payment-confirmation/'
+          }
         })
       });
     }
   }, '#paypal-button');
-
 </script>
 {% endblock content %}

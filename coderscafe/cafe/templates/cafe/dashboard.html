@@ -28,6 +28,7 @@
                             <th scrope="col">County</th>
                             <th scrope="col">Postcode</th>
                             <th scrope="col">Is Paid?</th>
+                            <th scrope="col">Details</th>
                         </tr>
                     </thead>
 
@@ -49,6 +50,7 @@
                                 <i style="color: red;" class="fas fa-times"></i>
                                 {% endif %}
                             </td>
+                            <td><a href="{% url 'order-details' order.pk %}"><i class="far fa-edit"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

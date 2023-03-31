@@ -27,6 +27,7 @@ class OrderModel(models.Model):
     county = models.CharField(max_length=15, blank=True)
     post_code = models.CharField(max_length=15, blank=True, null=True)
     is_paid = models.BooleanField(default=False)
+    is_shipped = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Order: {self.created_on.strftime("%b %d %I: %M %p")}'

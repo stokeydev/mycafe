@@ -4,3 +4,14 @@
     width: 100vw;
     height: 100vh;
 }
+
+#hometext {
+    position: absolute;
+  top: 50%; right: 50%;
+  transform: translate(50%,-50%);
+}
+
+#welcome {
+    background-color: rgba(124, 120, 119, 0.7);
+    font-family: Cursive, sans-serif;
+}

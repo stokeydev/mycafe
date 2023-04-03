@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="container-fluid" id="front-page">
-<div class="container mb-5">
-    <div class="row justify-content-center mt-5">
+<div class="container mb-5" id="hometext">
+    <div class="row justify-content-center mt-1" >
         <div class="col-md-8 col-sm-12 offset-md-1 p-2 text-center text-light">
-            <h1>Welcome to our online menu</h1>
+            <h1 id="welcome">Bienvenue to our online ordering platform. See our menu and order online.</h1>
         </div>
     </div>
     <div class="row justify-content-center mt-1">
         <div class="card col-md-5 col-sm-12 offset-md-1 p-4 text-center">
-            <h2>Place an order</h2>
-            <a href="{% url 'order' %}" class="btn btn-outline-primary">Order Now!</a>
+            <h2>Ready to order?</h2>
+            <a href="{% url 'order' %}" class="btn btn-outline-primary">Click here to order</a>
         </div>
     </div>
 </div>
